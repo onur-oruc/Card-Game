@@ -1,0 +1,146 @@
+import java.util.Scanner;
+import cardgame.*;
+
+// CardGameTest
+// author:
+// date:
+public class CardGameTest
+{
+    public static void main( String[] args)
+    {
+        Scanner scan = new Scanner( System.in);
+        
+        System.out.println( "Start of CardGameTest\n");
+        
+        // CONSTANTS
+        
+        // VARIABLES
+        Card       c;
+        Cards      cards;
+        ScoreCard  scores;
+        Player     p1;
+        Player     p2;
+        Player     p3;
+        Player     p4;
+        CardGame   game;
+        
+        // PROGRAM CODE
+        //initialization
+        //scores
+        scores = new ScoreCard(4);
+        
+        //players
+        p1 = new Player ( "p1");
+        p2 = new Player ( "p2");
+        p3 = new Player ( "p3");
+        p4 = new Player ( "p4");
+        
+        // initial cards
+        cards = new Cards( true);
+        cards.shuffle();
+        
+        // game
+        game = new CardGame( p1, p2, p3, p4);
+              
+        for ( int i = 0; i < 52; i++) {
+            if ( i % 4 == 0) {
+                p1.add(cards.getTopCard());
+            }
+            if ( i % 4 == 1) {
+                p2.add(cards.getTopCard());
+            }
+            if ( i % 4 == 2) {
+                p3.add(cards.getTopCard());
+            }
+            if ( i % 4 == 3) {
+                p4.add(cards.getTopCard());
+            }     
+        }
+        
+        
+        System.out.println( p1.playCard());
+        //***********
+        Card temp = new Card( 1);
+        
+        System.out.println( game.getRoundNo());
+        System.out.println( game.getTurnOfPlayerNo());
+        System.out.println( game.isTurnOf( p1));
+        System.out.println( game.isTurnOf( p4));
+        
+        //get name
+        System.out.println( game.getName( 0));
+        System.out.println( game.getName( 1));
+        System.out.println( game.getName( 2));
+        System.out.println( game.getName( 3));
+        
+        //get score
+        System.out.println( game.getScore( 0));
+        System.out.println( game.getScore( 1));
+        System.out.println( game.getScore( 2));
+        System.out.println( game.getScore( 3));
+        // buraya kadar doðru
+        
+        cards.testOnlyPrint();
+         System.out.println( game.isTurnOf( p1));
+        game.playTurn( p1, temp);
+         System.out.println( game.isTurnOf( p2));
+        game.playTurn( p2, temp);
+         System.out.println( game.isTurnOf( p3));
+        game.playTurn( p3, temp);
+         System.out.println( game.isTurnOf( p4));
+        game.playTurn( p4, temp);
+        
+        System.out.println(game.showScoreCard());
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        // test Card class
+        //c = new Card( 1);
+        //System.out.println( c);
+        System.out.println();
+        
+        // test Cards class
+        cards = new Cards( true);
+        cards.shuffle();
+        //cards.addTopCard( c);
+       // cards.testOnlyPrint();  // remove method after testing!
+        
+        // test ScoreCard class
+       //scores = new ScoreCard( 4);
+        //scores.update( 3, 1);
+        //scores.update( 1, 2);*/
+       // System.out.println( "\n" + scores );
+        
+        // test Player class
+        // ToDo
+        
+        // test CardGame class too?
+        
+        
+        // Once you have all the bits working, complete the MyCardGame program
+        // that provides a menu allowing any of the players to play their card,
+        // an option to see the score card, and one to quit the game at any time.
+        // When the game is over it should print out the winners.
+        
+        System.out.println( "\nEnd of CardGameTest\n" );
+    }
+    
+} // end of class CardGameTest
